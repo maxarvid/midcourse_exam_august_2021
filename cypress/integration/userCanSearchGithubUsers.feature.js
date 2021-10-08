@@ -10,9 +10,18 @@ describe("Gihub user search", () => {
     cy.get("[data-cy=user-search-input").should("be.visible");
   });
 
-  it.only("is expected to return an array of users", () => {
-    cy.get("[data-cy=user-search-input]").type("Barrack");
-    cy.get("[data-cy=user-search-btn]").click();
-    cy.get("[data-cy=user-search-result]").children().should("have.length", 3);
-  });
+  describe('submits a search query', () => {
+    beforeEach(() => {
+      cy.get("[data-cy=user-search-input]").type("Barrack");
+      cy.get("[data-cy=user-search-btn]").click();
+    });
+    
+    it("is expected to return an array of users", () => {
+      cy.get("[data-cy=user-search-result]").children().should("have.length", 3);
+    });
+  
+    it('is expected to return a login name for users', () => {
+      cy.get("[data-cy=user-search-result").first().should('contain.text', 'barack')
+    });
+  })
 });
