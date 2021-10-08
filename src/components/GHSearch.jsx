@@ -16,7 +16,7 @@ const GHSearch = () => {
   };
 
   let searchResultArray = searchResults.map((result) => {
-    return <h2>{result.login}</h2>;
+    return <h2 key={result.id}>{result.login}</h2>;
   });
 
   return (
