@@ -5,7 +5,7 @@ const GHSearch = () => {
   return (
     <>
       <Input data-cy="user-search-input" type="text" name="search" placeholder="Input GH username"/>
-      <Button name="search">Search</Button>
+      <Button data-cy="user-search-btn" name="search">Search</Button>
     </>
   )
 }
