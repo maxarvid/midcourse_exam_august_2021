@@ -1,9 +1,9 @@
 describe("Gihub user search", () => {
   beforeEach(() => {
-    cy.visit("/");
     cy.intercept("GET", "**/api/users/", {
       fixture: "userSearchResponse.json",
     });
+    cy.visit("/");
   });
 
   it("is expected to have an input field", () => {

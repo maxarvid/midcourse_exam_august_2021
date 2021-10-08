@@ -7,6 +7,7 @@ I would like to be able to search all users
 ```
 Tasks:
 - Create cypress test
+- Update dependencies to use `cy.intercept`
 
 
 
