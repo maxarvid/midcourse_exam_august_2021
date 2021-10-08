@@ -1,8 +1,10 @@
-import React from "react";
-import { Button, Input } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Button, Input, Form } from "semantic-ui-react";
 import axios from "axios";
 
 const GHSearch = () => {
+  const [searchQuery, setSearchQuery] = useState();
+
   const performSearch = async (searchQuery) => {
     debugger;
     const response = await axios({
@@ -14,21 +16,25 @@ const GHSearch = () => {
 
   return (
     <>
-      <Input
-        data-cy="user-search-input"
-        type="text"
-        name="search"
-        placeholder="Input GH username"
-      />
-      <Button
-        data-cy="user-search-btn"
-        name="search"
-        onClick={(e) => {
-          performSearch(e.target.value);
-        }}
-      >
-        Search
-      </Button>
+      <Form>
+        <Input
+          data-cy="user-search-input"
+          type="text"
+          name="search"
+          value={searchQuery}
+          placeholder="Input GH username"
+          onChange={(e) => {setSearchQuery(e.target.value)}}
+        />
+        <Button
+          data-cy="user-search-btn"
+          name="search"
+          onClick={(e) => {
+            performSearch(searchQuery);
+          }}
+        >
+          Search
+        </Button>
+      </Form>
     </>
   );
 };
