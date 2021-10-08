@@ -10,6 +10,9 @@ Tasks:
 - Update dependencies to use `cy.intercept`
 - Save user input through useState hook
 - Stub out axios GET request to github
+- Display login names
+- Check that there are login names
+- Check for a sad path where user clicks on submit without inputing a search query
 
 
 
