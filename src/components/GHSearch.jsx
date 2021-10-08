@@ -4,15 +4,20 @@ import axios from "axios";
 
 const GHSearch = () => {
   const [searchQuery, setSearchQuery] = useState();
+  const [searchResults, setSearchResults] = useState([]);
 
   const performSearch = async (searchQuery) => {
-    debugger;
     const response = await axios({
       method: "GET",
       url: "https://api.github.com/search/users/",
-      data: searchQuery,
+      data: { q: searchQuery },
     });
+    setSearchResults(response.data.items);
   };
+
+  let searchResultArray = searchResults.map((result) => {
+    return <h2>{result.login}</h2>;
+  });
 
   return (
     <>
@@ -23,18 +28,21 @@ const GHSearch = () => {
           name="search"
           value={searchQuery}
           placeholder="Input GH username"
-          onChange={(e) => {setSearchQuery(e.target.value)}}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+          }}
         />
         <Button
           data-cy="user-search-btn"
           name="search"
-          onClick={(e) => {
+          onClick={() => {
             performSearch(searchQuery);
           }}
         >
           Search
         </Button>
       </Form>
+      <div data-cy="user-search-result">{searchResultArray}</div>
     </>
   );
 };

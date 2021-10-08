@@ -8,6 +8,8 @@ I would like to be able to search all users
 Tasks:
 - Create cypress test
 - Update dependencies to use `cy.intercept`
+- Save user input through useState hook
+- Stub out axios GET request to github
 
 
 

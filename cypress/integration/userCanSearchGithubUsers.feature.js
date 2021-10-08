@@ -1,6 +1,6 @@
 describe("Gihub user search", () => {
   beforeEach(() => {
-    cy.intercept("GET", "**/api/users/", {
+    cy.intercept("GET", "**/api.github.com/**", {
       fixture: "userSearchResponse.json",
     });
     cy.visit("/");
@@ -10,9 +10,9 @@ describe("Gihub user search", () => {
     cy.get("[data-cy=user-search-input").should("be.visible");
   });
 
-  it("is expected to return an array of users", () => {
+  it.only("is expected to return an array of users", () => {
     cy.get("[data-cy=user-search-input]").type("Barrack");
     cy.get("[data-cy=user-search-btn]").click();
-    cy.get("[data-cy=user-search-result]").should("have.length", 3);
+    cy.get("[data-cy=user-search-result]").children().should("have.length", 3);
   });
 });
