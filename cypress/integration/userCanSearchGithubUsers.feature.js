@@ -24,4 +24,16 @@ describe("Gihub user search", () => {
       cy.get("[data-cy=user-search-result").first().should('contain.text', 'barack')
     });
   })
+
+  describe('does not submit a search query', () => {
+    beforeEach(() => {
+      cy.get("[data-cy=user-search-btn]").click();
+    });
+
+    it('is expected to issue a prompt to fill out search input', () => {
+      cy.get("[data-cy=input-prompt").should('contain.text', 'Please enter a search term')
+    });
+    
+  })
+  
 });
