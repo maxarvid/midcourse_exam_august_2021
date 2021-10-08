@@ -1,3 +1,15 @@
+### User Stories
+
+```
+As a user
+In order to find someone on Github
+I would like to be able to search all users
+```
+Tasks:
+- Create cypress test
+
+
+
 ## Midcourse Exam Challenge - GitHub User Search
 
 You are challenged with creating a feature that allows the users to search the GitHub registry of users.
