@@ -5,8 +5,10 @@ import axios from "axios";
 const GHSearch = () => {
   const [searchQuery, setSearchQuery] = useState();
   const [searchResults, setSearchResults] = useState([]);
+  const [viewPrompt, setViewPrompt] = useState(false)
 
   const performSearch = async (searchQuery) => {
+    if(!searchQuery) { setViewPrompt(true) }
     const response = await axios({
       method: "GET",
       url: "https://api.github.com/search/users/",
@@ -29,6 +31,7 @@ const GHSearch = () => {
           value={searchQuery}
           placeholder="Input GH username"
           onChange={(e) => {
+            setViewPrompt(false)
             setSearchQuery(e.target.value);
           }}
         />
@@ -43,6 +46,7 @@ const GHSearch = () => {
         </Button>
       </Form>
       <div data-cy="user-search-result">{searchResultArray}</div>
+      {viewPrompt && <h3 data-cy="input-prompt">Please enter a search term</h3>}
     </>
   );
 };
